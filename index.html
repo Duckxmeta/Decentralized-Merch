@@ -31,6 +31,10 @@
             aspect-ratio: 1 / 1;
             object-fit: cover;
         }
+        /* Added for modal transitions */
+        .modal {
+            transition: opacity 0.25s ease;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -40,25 +44,25 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- Logo -->
             <a href="#" class="flex items-center space-x-3 text-2xl font-bold text-gray-800">
-                <!-- Updated Logo Image -->
                 <img src="https://i.imgur.com/26hkHfq.png" alt="JustDuckIt Logo" class="h-12 w-auto object-contain">
                 <span>JustDuckIt</span>
             </a>
             
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#" class="text-gray-600 hover:text-yellow-500 transition-colors">Home</a>
+                <!-- UPDATED: Home button now links to the main site -->
+                <a href="https://justduckit.org" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-yellow-500 transition-colors">Home</a>
                 <a href="#products" class="text-gray-600 hover:text-yellow-500 transition-colors">All Products</a>
                 <a href="#" class="text-gray-600 hover:text-yellow-500 transition-colors">About Us</a>
             </div>
             
             <!-- Cart Icon -->
-            <div class="relative">
+            <button id="cart-button" class="relative">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 <span id="cart-badge" class="absolute -top-2 -right-2 bg-yellow-400 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
-            </div>
+            </button>
         </nav>
     </header>
 
@@ -75,7 +79,6 @@
         <section id="products">
             <h2 class="text-3xl font-bold text-gray-800 text-center mb-10">Our Collection</h2>
             
-            <!-- Product Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Product Card 1: Premium Decentralized Tee -->
@@ -83,7 +86,7 @@
                     <div class="relative">
                         <img src="https://i.imgur.com/U9e6xWi.png" alt="Premium Decentralized Tee" class="w-full product-image">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button onclick="addToCart('Premium Tee')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                            <button onclick="addToCart('Premium Decentralized Tee', 39.00)" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
                         </div>
                     </div>
                     <div class="p-6">
@@ -100,7 +103,7 @@
                     <div class="relative">
                         <img src="https://i.imgur.com/FYS3LsC.png" alt="Classic Decentralized Tee" class="w-full product-image">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button onclick="addToCart('Classic Tee')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                            <button onclick="addToCart('Classic Decentralized Tee', 24.50)" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
                         </div>
                     </div>
                     <div class="p-6">
@@ -117,7 +120,7 @@
                     <div class="relative">
                         <img src="https://i.imgur.com/PtDFXyR.png" alt="Quack Head Hat" class="w-full product-image">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button onclick="addToCart('Quack Head Hat')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                            <button onclick="addToCart('Quack Head Hat', 21.95)" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
                         </div>
                     </div>
                     <div class="p-6">
@@ -134,7 +137,7 @@
                     <div class="relative">
                         <img src="https://i.imgur.com/z2kDC2D.png" alt="Decentralized Sanctuary Hat" class="w-full product-image">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button onclick="addToCart('Sanctuary Hat')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                            <button onclick="addToCart('Decentralized Sanctuary Hat', 21.95)" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
                         </div>
                     </div>
                     <div class="p-6">
@@ -151,7 +154,7 @@
                     <div class="relative">
                         <img src="https://i.imgur.com/mbfFxEp.png" alt="Decent Quack Socks" class="w-full product-image">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button onclick="addToCart('Quack Socks')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                            <button onclick="addToCart('Decent Quack Socks', 13.05)" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
                         </div>
                     </div>
                     <div class="p-6">
@@ -168,7 +171,7 @@
                     <div class="relative">
                         <img src="https://i.imgur.com/afjkjvx.png" alt="Duck Pfp Canvas" class="w-full product-image">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <button onclick="addToCart('Duck Pfp Canvas')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                            <button onclick="addToCart('Duck Pfp Canvas', 27.00)" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
                         </div>
                     </div>
                     <div class="p-6">
@@ -195,44 +198,116 @@
     <!-- Toast Notification Container -->
     <div id="toast-container" class="fixed bottom-5 right-5 z-50"></div>
 
+    <!-- NEW: Shopping Cart Modal -->
+    <div id="cart-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 pointer-events-none opacity-0">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md m-4">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 class="text-xl font-semibold">Your Cart</h3>
+                <button id="close-modal-button" class="text-gray-500 hover:text-gray-800">&times;</button>
+            </div>
+            <!-- Modal Body -->
+            <div id="cart-items-container" class="p-4 max-h-64 overflow-y-auto">
+                <!-- Cart items will be injected here by JavaScript -->
+                <p id="empty-cart-message" class="text-gray-500">Your cart is empty.</p>
+            </div>
+            <!-- Modal Footer -->
+            <div class="p-4 border-t">
+                <div class="flex justify-between items-center font-semibold text-lg">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <button class="w-full bg-yellow-400 text-gray-800 font-bold py-3 px-6 rounded-lg mt-4 hover:bg-yellow-500 transition-colors">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript for interactivity -->
     <script>
-        // --- Shopping Cart Logic ---
-        let cartCount = 0;
+        // --- DOM Elements ---
+        const cartButton = document.getElementById('cart-button');
+        const cartModal = document.getElementById('cart-modal');
+        const closeModalButton = document.getElementById('close-modal-button');
         const cartBadge = document.getElementById('cart-badge');
-        
-        function addToCart(productName) {
-            // 1. Increment the cart count
-            cartCount++;
-            
-            // 2. Update the badge in the UI
-            cartBadge.textContent = cartCount;
-            cartBadge.classList.add('transform', 'scale-125');
-            setTimeout(() => {
-                cartBadge.classList.remove('transform', 'scale-125');
-            }, 150);
-
-            // 3. Show a confirmation toast
-            showToast(`${productName} was added to your cart!`);
-        }
-
-        // --- Toast Notification Logic ---
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartSubtotal = document.getElementById('cart-subtotal');
         const toastContainer = document.getElementById('toast-container');
 
+        // --- State ---
+        let cart = [];
+
+        // --- Functions ---
+        function addToCart(productName, price) {
+            // Add product to cart array
+            cart.push({ name: productName, price: price });
+            
+            // Show confirmation toast
+            showToast(`${productName} was added to your cart!`);
+            
+            // Update the cart display
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            // Clear current items
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.appendChild(emptyCartMessage);
+                emptyCartMessage.style.display = 'block';
+            } else {
+                emptyCartMessage.style.display = 'none';
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex justify-between items-center py-2';
+                    itemElement.innerHTML = `
+                        <span>${item.name}</span>
+                        <span class="font-semibold">$${item.price.toFixed(2)}</span>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+            }
+            
+            // Update badge
+            cartBadge.textContent = cart.length;
+            
+            // Update subtotal
+            const subtotal = cart.reduce((total, item) => total + item.price, 0);
+            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+        }
+
         function showToast(message) {
-            // Create the toast element
             const toast = document.createElement('div');
             toast.className = 'bg-gray-800 text-white py-3 px-5 rounded-lg shadow-xl toast-animation';
             toast.textContent = message;
-
-            // Add it to the container
             toastContainer.appendChild(toast);
-
-            // Remove the toast after 3 seconds
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
+            setTimeout(() => toast.remove(), 3000);
         }
+
+        function openModal() {
+            cartModal.classList.remove('pointer-events-none', 'opacity-0');
+        }
+
+        function closeModal() {
+            cartModal.classList.add('pointer-events-none', 'opacity-0');
+        }
+
+        // --- Event Listeners ---
+        cartButton.addEventListener('click', openModal);
+        closeModalButton.addEventListener('click', closeModal);
+        cartModal.addEventListener('click', (event) => {
+            // Close modal if the background overlay is clicked
+            if (event.target === cartModal) {
+                closeModal();
+            }
+        });
+
+        // --- Initial Call ---
+        updateCartDisplay(); // To set initial state (e.g., "Your cart is empty")
+
     </script>
 
 </body>
