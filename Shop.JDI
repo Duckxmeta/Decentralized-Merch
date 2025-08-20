@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustDuckIt - Official Store</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Use the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Simple animation for the toast notification */
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateY(20px); }
+            10%, 90% { opacity: 1; transform: translateY(0); }
+        }
+        .toast-animation {
+            animation: fadeInOut 3s ease-in-out forwards;
+        }
+        /* Ensure product images have a consistent aspect ratio */
+        .product-image {
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 text-2xl font-bold text-gray-800">
+                <!-- Updated Logo Image -->
+                <img src="https://i.imgur.com/26hkHfq.png" alt="JustDuckIt Logo" class="h-12 w-auto object-contain">
+                <span>JustDuckIt</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="text-gray-600 hover:text-yellow-500 transition-colors">Home</a>
+                <a href="#products" class="text-gray-600 hover:text-yellow-500 transition-colors">All Products</a>
+                <a href="#" class="text-gray-600 hover:text-yellow-500 transition-colors">About Us</a>
+            </div>
+            
+            <!-- Cart Icon -->
+            <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span id="cart-badge" class="absolute -top-2 -right-2 bg-yellow-400 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- Hero Section -->
+        <section class="text-center bg-white p-10 rounded-lg shadow-md mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Official JustDuckIt Store</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">Discover our exclusive collection of premium, quirky, and collectible ducks. Perfect for your desk, bath, or collection.</p>
+            <a href="#products" class="bg-yellow-400 text-gray-800 font-bold py-3 px-8 rounded-full hover:bg-yellow-500 transition-all duration-300 transform hover:scale-105">Shop Now</a>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-10">Our Collection</h2>
+            
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Product Card 1: Premium Decentralized Tee -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://i.imgur.com/U9e6xWi.png" alt="Premium Decentralized Tee" class="w-full product-image">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button onclick="addToCart('Premium Tee')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Premium Decentralized Tee</h3>
+                        <div class="flex items-baseline mt-2">
+                            <p class="text-lg font-bold text-yellow-600">$39.00</p>
+                            <p class="text-md text-gray-500 line-through ml-2">$50.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2: Classic Decentralized Tee -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://i.imgur.com/FYS3LsC.png" alt="Classic Decentralized Tee" class="w-full product-image">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button onclick="addToCart('Classic Tee')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Classic Decentralized Tee</h3>
+                        <div class="flex items-baseline mt-2">
+                            <p class="text-lg font-bold text-yellow-600">$24.50</p>
+                            <p class="text-md text-gray-500 line-through ml-2">$40.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3: Quack Head Hat -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://i.imgur.com/PtDFXyR.png" alt="Quack Head Hat" class="w-full product-image">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button onclick="addToCart('Quack Head Hat')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Quack Head Hat</h3>
+                        <div class="flex items-baseline mt-2">
+                            <p class="text-lg font-bold text-yellow-600">$21.95</p>
+                            <p class="text-md text-gray-500 line-through ml-2">$30.00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Card 4: Decentralized Sanctuary Hat -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://i.imgur.com/z2kDC2D.png" alt="Decentralized Sanctuary Hat" class="w-full product-image">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button onclick="addToCart('Sanctuary Hat')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Decentralized Sanctuary Hat</h3>
+                        <div class="flex items-baseline mt-2">
+                            <p class="text-lg font-bold text-yellow-600">$21.95</p>
+                            <p class="text-md text-gray-500 line-through ml-2">$30.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5: Decent Quack Socks -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://i.imgur.com/mbfFxEp.png" alt="Decent Quack Socks" class="w-full product-image">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button onclick="addToCart('Quack Socks')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Decent Quack Socks</h3>
+                        <div class="flex items-baseline mt-2">
+                            <p class="text-lg font-bold text-yellow-600">$13.05</p>
+                            <p class="text-md text-gray-500 line-through ml-2">$22.50</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6: Duck Pfp Canvas -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://i.imgur.com/afjkjvx.png" alt="Duck Pfp Canvas" class="w-full product-image">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button onclick="addToCart('Duck Pfp Canvas')" class="text-white bg-yellow-500 py-2 px-4 rounded-lg">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Duck Pfp Canvas</h3>
+                        <div class="flex items-baseline mt-2">
+                            <p class="text-lg font-bold text-yellow-600">$27.00</p>
+                            <p class="text-md text-gray-500 line-through ml-2">$49.50</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2024 JustDuckIt. All Rights Reserved.</p>
+            <p class="text-gray-400 mt-2">A fun demo store built for you.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50"></div>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        // --- Shopping Cart Logic ---
+        let cartCount = 0;
+        const cartBadge = document.getElementById('cart-badge');
+        
+        function addToCart(productName) {
+            // 1. Increment the cart count
+            cartCount++;
+            
+            // 2. Update the badge in the UI
+            cartBadge.textContent = cartCount;
+            cartBadge.classList.add('transform', 'scale-125');
+            setTimeout(() => {
+                cartBadge.classList.remove('transform', 'scale-125');
+            }, 150);
+
+            // 3. Show a confirmation toast
+            showToast(`${productName} was added to your cart!`);
+        }
+
+        // --- Toast Notification Logic ---
+        const toastContainer = document.getElementById('toast-container');
+
+        function showToast(message) {
+            // Create the toast element
+            const toast = document.createElement('div');
+            toast.className = 'bg-gray-800 text-white py-3 px-5 rounded-lg shadow-xl toast-animation';
+            toast.textContent = message;
+
+            // Add it to the container
+            toastContainer.appendChild(toast);
+
+            // Remove the toast after 3 seconds
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
